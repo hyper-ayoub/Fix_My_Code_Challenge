@@ -1,20 +1,27 @@
-#include <string.h>
-#include <stdlib.h>
-#include "lists.h"
+#ifndef _LISTS_H_
+#define _LISTS_H_
+
+#include <stddef.h>
 
 /**
- * free_dlistint - Free a list
+ * struct dlistint_s - doubly linked list
+ * @n: integer
+ * @prev: points to the prev node
+ * @next: points to the next node
  *
- * @head: A pointer to the first element of the list
+ * Description: doubly linked list node structure
+ * for Holberton project
  */
-void free_dlistint(dlistint_t *head)
+typedef struct dlistint_s
 {
-	dlistint_t *node;
+	int n;
+	struct dlistint_s *prev;
+	struct dlistint_s *next;
+} dlistint_t;
 
-	while (head)
-	{
-		node = head;
-		head = head->next;
-		free(node);
-	}
-}
+size_t print_dlistint(const dlistint_t *h);
+dlistint_t *add_dnodeint_end(dlistint_t **head, const int n);
+int delete_dnodeint_at_index(dlistint_t **head, unsigned int index);
+void free_dlistint(dlistint_t *head);
+
+#endif
