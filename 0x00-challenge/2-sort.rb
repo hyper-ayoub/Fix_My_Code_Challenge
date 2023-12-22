@@ -1,1 +1,31 @@
-{"payload":{"allShortcutsEnabled":false,"fileTree":{"":{"items":[{"name":"0-fizzbuzz.py","path":"0-fizzbuzz.py","contentType":"file"},{"name":"1-print_square.js","path":"1-print_square.js","contentType":"file"},{"name":"2-sort.rb","path":"2-sort.rb","contentType":"file"},{"name":"3-user.py","path":"3-user.py","contentType":"file"},{"name":"README.md","path":"README.md","contentType":"file"}],"totalCount":5}},"fileTreeProcessingTime":1.954879,"foldersToFetch":[],"reducedMotionEnabled":null,"repo":{"id":734858145,"defaultBranch":"master","name":"Fix_My_Code_Challenge","ownerLogin":"hyper-ayoub","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2023-12-22T20:37:24.000Z","ownerAvatar":"https://avatars.githubusercontent.com/u/133155846?v=4","public":true,"private":false,"isOrgOwned":false},"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"master","listCacheKey":"v0:1703277584.0","canEdit":false,"refType":"branch","currentOid":"f106cb9b2634158fda3d303a207019e55355e1ad"},"path":"2-sort.rb","currentUser":null,"blob":{"rawLines":[],"stylingDirectives":[],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/hyper-ayoub/Fix_My_Code_Challenge/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/hyper-ayoub/Fix_My_Code_Challenge/security/dependabot","repoSecurityAndAnalysisPath":"/hyper-ayoub/Fix_My_Code_Challenge/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"2-sort.rb","displayUrl":"https://github.com/hyper-ayoub/Fix_My_Code_Challenge/blob/master/2-sort.rb?raw=true","headerInfo":{"blobSize":"0 Bytes","deleteInfo":{"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":"https://desktop.github.com","gitLfsPath":null,"onBranch":true,"shortPath":"e69de29","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fhyper-ayoub%2FFix_My_Code_Challenge%2Fblob%2Fmaster%2F2-sort.rb","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"0","truncatedSloc":"0"},"mode":"file"},"image":false,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":null,"languageID":null,"large":false,"loggedIn":false,"newDiscussionPath":"/hyper-ayoub/Fix_My_Code_Challenge/discussions/new","newIssuePath":"/hyper-ayoub/Fix_My_Code_Challenge/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/hyper-ayoub/Fix_My_Code_Challenge/blob/master/2-sort.rb","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/hyper-ayoub/Fix_My_Code_Challenge/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"rawBlobUrl":"https://github.com/hyper-ayoub/Fix_My_Code_Challenge/raw/master/2-sort.rb","renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"shortPath":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"hyper-ayoub","repoName":"Fix_My_Code_Challenge","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timed_out":true,"not_analyzed":true,"symbols":[],"error":{"code":"invalid_argument","msg":"content required","meta":{}}}},"copilotInfo":null,"copilotAccessAllowed":false,"csrf_tokens":{"/hyper-ayoub/Fix_My_Code_Challenge/branches":{"post":"2NcAIZAN_8kKDKfiuxwNtG012qkVV2DhQZLVh54QvpY5aGDcsxMRSKHJ3q4_kcDhL4L47hsDJwpvD7R04SqXOg"},"/repos/preferences":{"post":"D3m8DzavD65gs0MhRDFZuu9lyxXcmnHy90ditTYppPQSt_Hs3XpVZklcRvvNgV_-yjz-UuOygqEfw-NRKcap9w"}}},"title":"Fix_My_Code_Challenge/2-sort.rb at master · hyper-ayoub/Fix_My_Code_Challenge"}
+###
+#
+#  Sort integer arguments (ascending) 
+#
+###
+
+result = []
+ARGV.each do |arg|
+    # skip if not integer
+    next if arg !~ /^-?[0-9]+$/
+
+    # convert to integer
+    i_arg = arg.to_i
+    
+    # insert result at the right position
+    is_inserted = false
+    i = 0
+    l = result.size
+    while !is_inserted && i < l do
+        if result[i] < i_arg
+            i += 1
+        else
+            result.insert(i, i_arg)
+            is_inserted = true
+            break
+        end
+    end
+    result << i_arg if !is_inserted
+end
+
+puts result
