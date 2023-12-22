@@ -1,1 +1,101 @@
-{"payload":{"allShortcutsEnabled":false,"fileTree":{"":{"items":[{"name":"0-fizzbuzz.py","path":"0-fizzbuzz.py","contentType":"file"},{"name":"1-print_square.js","path":"1-print_square.js","contentType":"file"},{"name":"2-sort.rb","path":"2-sort.rb","contentType":"file"},{"name":"3-user.py","path":"3-user.py","contentType":"file"},{"name":"README.md","path":"README.md","contentType":"file"}],"totalCount":5}},"fileTreeProcessingTime":1.752705,"foldersToFetch":[],"reducedMotionEnabled":null,"repo":{"id":734858145,"defaultBranch":"master","name":"Fix_My_Code_Challenge","ownerLogin":"hyper-ayoub","currentUserCanPush":false,"isFork":false,"isEmpty":false,"createdAt":"2023-12-22T20:37:24.000Z","ownerAvatar":"https://avatars.githubusercontent.com/u/133155846?v=4","public":true,"private":false,"isOrgOwned":false},"symbolsExpanded":false,"treeExpanded":true,"refInfo":{"name":"master","listCacheKey":"v0:1703277584.0","canEdit":false,"refType":"branch","currentOid":"f106cb9b2634158fda3d303a207019e55355e1ad"},"path":"3-user.py","currentUser":null,"blob":{"rawLines":[],"stylingDirectives":[],"csv":null,"csvError":null,"dependabotInfo":{"showConfigurationBanner":false,"configFilePath":null,"networkDependabotPath":"/hyper-ayoub/Fix_My_Code_Challenge/network/updates","dismissConfigurationNoticePath":"/settings/dismiss-notice/dependabot_configuration_notice","configurationNoticeDismissed":null,"repoAlertsPath":"/hyper-ayoub/Fix_My_Code_Challenge/security/dependabot","repoSecurityAndAnalysisPath":"/hyper-ayoub/Fix_My_Code_Challenge/settings/security_analysis","repoOwnerIsOrg":false,"currentUserCanAdminRepo":false},"displayName":"3-user.py","displayUrl":"https://github.com/hyper-ayoub/Fix_My_Code_Challenge/blob/master/3-user.py?raw=true","headerInfo":{"blobSize":"0 Bytes","deleteInfo":{"deleteTooltip":"You must be signed in to make or propose changes"},"editInfo":{"editTooltip":"You must be signed in to make or propose changes"},"ghDesktopPath":"https://desktop.github.com","gitLfsPath":null,"onBranch":true,"shortPath":"e69de29","siteNavLoginPath":"/login?return_to=https%3A%2F%2Fgithub.com%2Fhyper-ayoub%2FFix_My_Code_Challenge%2Fblob%2Fmaster%2F3-user.py","isCSV":false,"isRichtext":false,"toc":null,"lineInfo":{"truncatedLoc":"0","truncatedSloc":"0"},"mode":"file"},"image":false,"isCodeownersFile":null,"isPlain":false,"isValidLegacyIssueTemplate":false,"issueTemplateHelpUrl":"https://docs.github.com/articles/about-issue-and-pull-request-templates","issueTemplate":null,"discussionTemplate":null,"language":null,"languageID":null,"large":false,"loggedIn":false,"newDiscussionPath":"/hyper-ayoub/Fix_My_Code_Challenge/discussions/new","newIssuePath":"/hyper-ayoub/Fix_My_Code_Challenge/issues/new","planSupportInfo":{"repoIsFork":null,"repoOwnedByCurrentUser":null,"requestFullPath":"/hyper-ayoub/Fix_My_Code_Challenge/blob/master/3-user.py","showFreeOrgGatedFeatureMessage":null,"showPlanSupportBanner":null,"upgradeDataAttributes":null,"upgradePath":null},"publishBannersInfo":{"dismissActionNoticePath":"/settings/dismiss-notice/publish_action_from_dockerfile","dismissStackNoticePath":"/settings/dismiss-notice/publish_stack_from_file","releasePath":"/hyper-ayoub/Fix_My_Code_Challenge/releases/new?marketplace=true","showPublishActionBanner":false,"showPublishStackBanner":false},"rawBlobUrl":"https://github.com/hyper-ayoub/Fix_My_Code_Challenge/raw/master/3-user.py","renderImageOrRaw":false,"richText":null,"renderedFileInfo":null,"shortPath":null,"tabSize":8,"topBannersInfo":{"overridingGlobalFundingFile":false,"globalPreferredFundingPath":null,"repoOwner":"hyper-ayoub","repoName":"Fix_My_Code_Challenge","showInvalidCitationWarning":false,"citationHelpUrl":"https://docs.github.com/en/github/creating-cloning-and-archiving-repositories/creating-a-repository-on-github/about-citation-files","showDependabotConfigurationBanner":false,"actionsOnboardingTip":null},"truncated":false,"viewable":true,"workflowRedirectUrl":null,"symbols":{"timed_out":true,"not_analyzed":true,"symbols":[],"error":{"code":"invalid_argument","msg":"content required","meta":{}}}},"copilotInfo":null,"copilotAccessAllowed":false,"csrf_tokens":{"/hyper-ayoub/Fix_My_Code_Challenge/branches":{"post":"sTLSuZ5HAa5Lo1BSspgdWO6YNLjO2JALH7aFOLov1LOnNn23GNhzD_-IXNmPKJnovPiEJfTiCFQiIAbYQV17Aw"},"/repos/preferences":{"post":"_cUegA_E8RmHl--1swH1VeUIqHL97eFgCBRpqBT7VRBOaXUacoRfkr5vJLW7YDjmtkxYSqSbkb9u3MpvVBEAdg"}}},"title":"Fix_My_Code_Challenge/3-user.py at master · hyper-ayoub/Fix_My_Code_Challenge"}
+#!/usr/bin/python3
+"""
+ User Model
+"""
+import hashlib
+import uuid
+
+
+class User():
+    """
+    User class:
+    - id: public string unique (uuid)
+    - password: private string hash in MD5
+    """
+
+    __password = None
+
+    def __init__(self):
+        """
+        Initialize a new user:
+        - assigned an unique `id`
+        """
+        self.id = str(uuid.uuid4())
+
+    @property
+    def password(self):
+        """
+        Password getter
+        """
+        return self.__password
+
+    @password.setter
+    def password(self, pwd):
+        """
+        Password setter:
+        - `None` if `pwd` is `None`
+        - `None` if `pwd` is not a string
+        - Hash `pwd` in MD5 before assigning to `__password`
+        """
+        if pwd is None or type(pwd) is not str:
+            self.__password = None
+        else:
+            self.__password = hashlib.md5(pwd.encode()).hexdigest().lower()
+
+    def is_valid_password(self, pwd):
+        """
+        Valid password:
+        - `False` if `pwd` is `None`
+        - `False` if `pwd` is not a string
+        - `False` if `__password` is `None`
+        - Compare `__password` and the MD5 value of `pwd`
+        """
+        if pwd is None or type(pwd) is not str:
+            return False
+        if self.__password is None:
+            return False
+        return hashlib.md5(pwd.encode()).hexdigest().upper() == self.__password
+
+
+if __name__ == '__main__':
+    print("Test User")
+
+    user_1 = User()
+    if user_1.id is None:
+        print("New User should have an id")
+
+    user_2 = User()
+    if user_1.id == user_2.id:
+        print("User.id should be unique")
+
+    u_pwd = "myPassword"
+    user_1.password = u_pwd
+    if user_1.password == u_pwd:
+        print("User.password should be hashed")
+
+    if user_2.password is not None:
+        print("User.password should be None by default")
+
+    user_2.password = None
+    if user_2.password is not None:
+        print("User.password should be None if set to None")
+
+    user_2.password = 89
+    if user_2.password is not None:
+        print("User.password should be None if set to an integer")
+
+    if not user_1.is_valid_password(u_pwd):
+        print("is_valid_password should return True if it's the right password")
+
+    if user_1.is_valid_password("Fakepwd"):
+        print("is_valid_password should return False if it's not the right password")
+
+    if user_1.is_valid_password(None):
+        print("is_valid_password should return False if compared with None")
+
+    if user_1.is_valid_password(89):
+        print("is_valid_password should return False if compared with an integer")
+
+    if user_2.is_valid_password("No pwd"):
+        print("is_valid_password should return False if no password set before")
+
