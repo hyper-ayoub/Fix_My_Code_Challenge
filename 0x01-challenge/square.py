@@ -1,29 +1,28 @@
 #!/usr/bin/python3
 
-class Square():
+class square():
     
-    side = 0
+    width = 0
+    height = 0
 
     
-    def __init__(self, **kwargs):
+    def __init__(self, *args, **kwargs):
         for key, value in kwargs.items():
             setattr(self, key, value)
 
-    def area(self):
+    def area_of_my_square(self):
         """ Area of the square """
-        return self.side * self.side
+        return self.width * self.width
 
-    def perimeter(self):
-        """ Perimeter of the square """
-        return 4 * self.side
-     
+    def PermiterOfMySquare(self):
+        return (self.width * 2) + (self.height * 2)
 
     def __str__(self):
-        return "Side length: {}".format(self.side)
+        return "{}/{}".format(self.width, self.height)
 
 if __name__ == "__main__":
 
-    s = Square(side=12)
+    s = square(width=12, height=9)
     print(s)
-    print("Area:", s.area())
-    print("Perimeter:", s.perimeter())
+    print(s.area_of_my_square())
+    print(s.PermiterOfMySquare())
