@@ -1,0 +1,40 @@
+
+path -> src/actions/AllPostActions.js: 
+this.actions.updatePosts(state.postsByPage[pageNum], pageNum); ✔️
+this.actions.updatePsots(state.postsByPage[pageNum], pageNum);
+
+
+path -> src/actions/AllPostActions.js: 
+var start = (pageNum * config.itemsPerPage); ✔️
+var start = ((pageNum % 2) * config.itemsPerPage);
+
+
+path -> src/actions/AllPostActions.js:
+request.get(config.baseUrl+'/ajax/postListContent',function(err,response){ ✔️
+reqeust.get(config.baseUrl+'/ajax/postListContent',function(err,response){
+
+path -> src/actions/AllPostActions.js:
+self.actions.updateNumberOfPosts(response.body.numberOfPosts); ✔️
+self.actions.update_numberOfPosts(response.body.numberOfPosts);
+
+
+path -> src/actions/AllPostActions.js:
+self.actions.updateNumberOfPosts(state.numberOfPosts); ✔️
+self.actions.update_numberOfPosts(state.numberOfPosts);
+
+
+path -> src/actions/SinglePostActions.js: 
+for(var i=0; i<includes.length; i++) { or for(let i=0; i<includes.length; i++) { ✔️
+for(const i=0; i<includes.length; i++) {
+
+
+path -> src/components/Header.jsx: 
+<NavBrand><Link to={/}>React Blog</Link></NavBrand> ✔️
+<NavBrand>Link to={/}>React Blog</Link></NavBrand>
+
+
+path-> src/components/PostPreview.jsx:
+<a href={'/post/' + this.props.post.id +'/'+this.props.post.slug} className="single-post" onClick={this.loadPost}>✔️
+<a href={'/post/ + this.props.post.id + /'+this.props.post.slug} className="single-post" onClick={this.loadPost}>
+
+
